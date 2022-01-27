@@ -2,9 +2,10 @@
 
 namespace App\Http\Resources;
 
-use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Http\Resources\Json\JsonResource;
+use Helper;
 
-class TransactionCollection extends ResourceCollection
+class TransactionCollection extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
@@ -14,18 +15,18 @@ class TransactionCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        $total_interest = $this->loan->amount * ($this->loan->interest_rate * $this->loan->loan_term / 100);
-        $total_amount_with_interest = $this->loan->amount + $total_interest;
-        $monthly_installment = $total_amount_with_interest / $this->loan->loan_term;
+        $total_amount_with_interest=Helper::GetTotalWithIntrest($this->loan->amount,$this->loan->interest_rate,$this->loan->loan_term,$this->loan->installment_period_multiplication);
+        $total_interest = $total_amount_with_interest-$this->loan->amount;
 
         return [
             'id' => (int)$this->id,
             'user' => $this->user->name,
             'total_amount_with_interest' => number_format($total_amount_with_interest, 2),
-            'monthly_installment' => number_format($monthly_installment, 2),
+            'term_installment' => number_format($this->amount, 2),
             'payment_method' => $this->payment_method,
-            'loan_term' => $this->loan->loan_term." weeks",
+            'loan_term' => $this->loan->loan_term." ".$this->loan->installment_period_text,
             'paid_installments_count' => $this->loan->transactions()->count(),
+            'paid_on' => $this->created_at,
         ];
     }
 }

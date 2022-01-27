@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\backend\Loans;
+use App\Http\Controllers\backend\Home;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,7 +13,11 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/',[Home::class,'index'])->name('home');
+Route::middleware('is_admin')->group(function () {
+    Route::get('/getLoans',[Loans::class,'getLoans'])->name('getLoans');
+    Route::get('/changeStatus/{load_id}/{status}',[Loans::class,'changeStatus'])->name('changeStatus');
 });
+

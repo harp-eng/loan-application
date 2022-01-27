@@ -2,9 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Users;
-use App\Http\Controllers\Loans;
-use App\Http\Controllers\Transactions;
+use App\Http\Controllers\API\Users;
+use App\Http\Controllers\API\Loans;
+use App\Http\Controllers\API\Transactions;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +19,11 @@ use App\Http\Controllers\Transactions;
 
 Route::post('/register',[Users::class,'register']);
 Route::post('/login',[Users::class,'login']);
-Route::get('/login',[Users::class,'unauthenticated'])->name('login');
+Route::get('/unauthenticated',[Users::class,'unauthenticated'])->name('unauthenticated');
 
 Route::middleware('auth:api')->group(function () {
     Route::post('/createLoan',[Loans::class,'create']);
     Route::post('/getLoans',[Loans::class,'getLoans']);
     Route::post('/loanDetails/{id}',[Loans::class,'loanDetails']);
-    Route::post('/createInstallment',[Loans::class,'createInstallment']);
+    Route::post('/createInstallment',[Transactions::class,'createInstallment']);
 });

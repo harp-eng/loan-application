@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Loan;
 use App\Http\Resources\LoanCollection;
 
@@ -33,7 +34,10 @@ class Loans extends Controller
 
     public function loanDetails($id)
     {
-        $loan = Loan::with('user', 'transactions')->findOrFail($id);
-        return $this->respondJson('', ['loan' => LoanCollection::make($loan)],200,1);
+        $loan = Loan::with('user', 'transactions')->find($id);
+        if($loan){
+            return $this->respondJson('', ['loan' => LoanCollection::make($loan)],200,1);
+        }
+        return $this->respondJson('loan infromation not found.',[],200,0);
     }
 }

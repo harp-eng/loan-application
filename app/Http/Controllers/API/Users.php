@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 use Validator;
 use App\User;
 
@@ -51,10 +52,10 @@ class Users extends Controller
             $responseArray['name']=$user['name'];
             return $this->respondJson('',$responseArray,200,1);
         }else{
-            return $this->respondJson('You have entered an invalid username or password.',[],200,0);
+            return $this->respondJson('You have entered an invalid username or password.',[],202,0);
         }
     }
     public function unauthenticated(){
-        return response()->json(['error'=>'unauthnticated'],202);
+        return $this->respondJson('unauthnticated user.',[],401,0);
     }
 }
