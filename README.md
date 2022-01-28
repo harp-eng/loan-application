@@ -1,9 +1,9 @@
 ## Loan Application
 Loan management system
 
-The project main purpose to manage loan related operations like create loan request, approval or rejection  and record installments.
+The main purpose of this project is to manage loan related operations like create loan request, approval or rejection  and record installments.
 
-task covered in this Project:
+task covered in this project:
 
  - APIs created to store loan request, get all loan request, particular request information and API to store installments.
  - Authication API provided for example register , login and All the requests are authenticated with Bearer Token Authentication
