@@ -22,7 +22,7 @@ task covered in this project:
 - Run `php artisan serve`
 
 ## API Documentation
-
+- update headers in apis to test apis with token Authorization Bearer{token} except login and register api
 - [Postman Collection](https://www.postman.com/trakopteam/workspace/loan-application/collection/12769370-ee7f2724-bb3f-4778-b18c-17e5b766c6ec)
 
 ## Backend Documentation
@@ -40,6 +40,7 @@ task covered in this project:
   - Url testing perfomed  with laravel unit testing module
 - Feature tests
   - All APIs testing cases perfomed with laravel feature testing module
+- Update .env.testing file with database details before test cases
 - Run below mention command to test all cases 
   - Run `php artisan test`
 
