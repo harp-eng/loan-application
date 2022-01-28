@@ -34,6 +34,14 @@ task covered in this project:
 
 - Loan Requests Page URL => http://localhost:8000/getLoans
 
+## Testing
+
+- Unit tests
+  - Url testing perfomed  with laravel unit testing module
+- Feature tests
+  - All APIs testing cases perfomed with laravel feature testing module
+- Run below mention command to test all cases 
+  - Run `php artisan test`
 
 ## Third-party Packages Used
 
