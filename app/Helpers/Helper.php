@@ -14,7 +14,7 @@ class Helper{
     public static function GetEmi($principal,$interest,$term,$term_frequency=12,$which_term)
     {
         $rate = $interest/100/$term_frequency;
-        $time = $term*$term_frequency;// in month
+        $time = $term*$term_frequency;
         $x= pow(1+$rate,$time);
         $monthly = ($principal*$x*$rate)/($x-1);
         $monthly = round($monthly);

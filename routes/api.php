@@ -23,7 +23,7 @@ Route::get('/unauthenticated',[Users::class,'unauthenticated'])->name('unauthent
 
 Route::middleware('auth:api')->group(function () {
     Route::post('/createLoan',[Loans::class,'create']);
-    Route::post('/getLoans',[Loans::class,'getLoans']);
-    Route::post('/loanDetails/{id}',[Loans::class,'loanDetails']);
+    Route::get('/getLoans',[Loans::class,'getLoans']);
+    Route::get('/loanDetails/{id}',[Loans::class,'loanDetails']);
     Route::post('/createInstallment',[Transactions::class,'createInstallment']);
 });

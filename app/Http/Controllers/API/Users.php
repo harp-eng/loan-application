@@ -22,7 +22,7 @@ class Users extends Controller
         ]);
         
         if($response!==true){
-            return $this->respondJson($response,[],202,0);
+            return $this->respondJson($response,[],422,0);
         }
 
         $getData['password']=bcrypt($getData['password']);
@@ -42,7 +42,7 @@ class Users extends Controller
         ]);
 
         if($response!==true){
-            return $this->respondJson('',$response,202,0);
+            return $this->respondJson($response,[],422,0);
         }
 
         if(Auth::attempt(['email' =>$getData['email'], 'password' =>$getData['password']])){

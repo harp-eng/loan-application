@@ -5,10 +5,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <div class="title">
-                Loan Requests
-            </div>
-
             <table class="table">
                 <thead>
                   <tr>

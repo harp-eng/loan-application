@@ -19,7 +19,7 @@ class Loans extends Controller
         ]);
         
         if ($response !== true) {
-            return $this->respondJson('please provide valid data format.',$response,200,0);
+            return $this->respondJson($response,[],422,0);
         }
 
         $loan = Loan::create($getData);
